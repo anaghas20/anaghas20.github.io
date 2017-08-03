@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+    <h1>Sign In</h1>
+    <input id="lEmail" type="text" placeholder="email" >
+    <input id="lPassword" type="password" placeholder="password">
+    <button id="lButton" type="submit">Sign In</button>
+    <button id="signOut" type="submit">Sign Out</button>
+
+    <script src="https://www.gstatic.com/firebasejs/4.2.0/firebase.js"></script>
+    <script>
+      // Initialize Firebase
+      var config = {
+        apiKey: "AIzaSyBks-XeAaH-RSMvGVOMfN99d0nomShTbpQ",
+        authDomain: "login-logout-20def.firebaseapp.com",
+        databaseURL: "https://login-logout-20def.firebaseio.com",
+        projectId: "login-logout-20def",
+        storageBucket: "login-logout-20def.appspot.com",
+        messagingSenderId: "231256731412"
+      };
+      firebase.initializeApp(config);
+    </script>
+
+    <script>
+      var lEmail = document.getElementById('lEmail')
+      var lPassword = document.getElementById('lPassword')
+      var lButton = document.getElementById('lButton')
+      var signIn = document.querySelector('h1')
+
+      var sigOut = document.getElementById('signOut')
+
+      lButton.onclick = function() {
+        firebase.auth().signInWithEmailAndPassword(lEmail.value, lPassword.value).catch(function(error) {
+          var errorCode = error.code
+          var errorMessage = error.message
+          alert(errorMessage)
+        })
+      }
+
+      firebase.auth().onAuthStateChanged(function(user) {
+        if (user) {
+          signIn.innerHTML = "Signed in as " + user.email
+          window.location.replace('index.html')
+        }
+      })
+
+      signOut.onclick = function () {
+        firebase.auth().signOut().then(function() {
+          signIn.innerHTML = "Sign Out successful"
+        }).catch(function (error) {
+          signIn.innerHTML = "Sign out unsuccessful"
+        })
+      }
+
+    </script>
+  </body>
+</html>

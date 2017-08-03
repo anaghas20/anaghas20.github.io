@@ -42,7 +42,9 @@
 									</li>
 								</ul>
 							</li>
-							<li><a href="#" class="button special">Sign Up</a></li>
+							<li><a href="sign-up.html" class="button special">Sign Up</a></li>
+							<li><a href="sign-in.html">Sign In</a></li>
+							<li><a id="sign-out">Sign Out</a></li>
 						</ul>
 					</nav>
 				</header>
@@ -243,6 +245,62 @@
 
 				</section>
 
+				<!-- Contact -->
+					<article class="container box style3">
+						<header>
+							<h2>Anything to Add</h2>
+							<p>If you have any questions to ask or answers to questions</p>
+						</header>
+						<form method="post" action="#">
+							<div class="row 50%">
+								<div class="6u 12u$(mobile)"><input type="text" class="text" name="name" placeholder="Name" /></div>
+								<div class="6u$ 12u$(mobile)"><input type="text" class="text" name="email" placeholder="Email" /></div>
+								<div class="12u$">
+									<textarea name="message" placeholder="Message"></textarea>
+								</div>
+								<div class="12u$">
+									<ul class="actions">
+										<li><input type="submit" value="Send Message" /></li>
+									</ul>
+								</div>
+							</div>
+						</form>
+					</article>
+
+					<!-- Footer --
+					<article class="container box style3"
+						<div id="footer-wrapper">
+							<div id="footer" class="container">
+								<header>
+									<h2>Questions or comments? <strong>Get in touch:</strong></h2>
+								</header>
+								<div class="row">
+									<div class="6u 12u(mobile)">
+										<section>
+											<form method="post" action="#">
+												<div class="row 50%">
+													<div class="6u 12u(mobile)">
+														<input name="name" placeholder="Name" type="text" />
+													</div>
+													<div class="6u 12u(mobile)">
+														<input name="email" placeholder="Email" type="text" />
+													</div>
+												</div>
+												<div class="row 50%">
+													<div class="12u">
+														<textarea name="message" placeholder="Message"></textarea>
+													</div>
+												</div>
+												<div class="row 50%">
+													<div class="12u">
+														<a href="#" class="form-button-submit button icon fa-envelope">Send Message</a>
+													</div>
+												</div>
+											</form>
+										</section>
+									</div>
+								</article> -->
+
 			<!-- Footer -->
 				<footer id="footer">
 
@@ -271,6 +329,32 @@
 			<script src="assets/js/util.js"></script>
 			<!--[if lte IE 8]><script src="assets/js/ie/respond.min.js"></script><![endif]-->
 			<script src="assets/js/main.js"></script>
+
+			<script src="https://www.gstatic.com/firebasejs/4.2.0/firebase.js"></script>
+			<script>
+				// Initialize Firebase
+				var config = {
+					apiKey: "AIzaSyBks-XeAaH-RSMvGVOMfN99d0nomShTbpQ",
+					authDomain: "login-logout-20def.firebaseapp.com",
+					databaseURL: "https://login-logout-20def.firebaseio.com",
+					projectId: "login-logout-20def",
+					storageBucket: "login-logout-20def.appspot.com",
+					messagingSenderId: "231256731412"
+				};
+				firebase.initializeApp(config);
+			</script>
+
+			<script>
+				var signOut = document.getElementById('sign-out')
+
+				signOut.onclick = function () {
+	        firebase.auth().signOut().then(function() {
+
+	        }).catch(function (error) {
+
+	        })
+	      }
+			</script>
 
 	</body>
 </html>

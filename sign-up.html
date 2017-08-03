@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+    <h1>Sign Up</h1>
+    <input id="rEmail" type="text" placeholder="email">
+    <input id="rPassword" type="password" placeholder="password">
+    <button id="rButton" type="submit">Sign up</button>
+
+    <script src="https://www.gstatic.com/firebasejs/4.2.0/firebase.js"></script>
+    <script>
+      // Initialize Firebase
+      var config = {
+        apiKey: "AIzaSyBks-XeAaH-RSMvGVOMfN99d0nomShTbpQ",
+        authDomain: "login-logout-20def.firebaseapp.com",
+        databaseURL: "https://login-logout-20def.firebaseio.com",
+        projectId: "login-logout-20def",
+        storageBucket: "login-logout-20def.appspot.com",
+        messagingSenderId: "231256731412"
+      };
+      firebase.initializeApp(config);
+    </script>
+
+    <script>
+      var rEmail = document.getElementById('rEmail')
+      var rPassword = document.getElementById('rPassword')
+      var rButton = document.getElementById('rButton')
+
+      var r = document.querySelector('h1')
+
+      rButton.onclick = function() {
+        firebase.auth().createUserWithEmailAndPassword (rEmail.value, rPassword.value).catch(function(error){
+          var errorCode = error.code
+          var errorMessage = error.message
+          alert(errorMessage)
+        })
+      }
+
+      firebase.auth().onAuthStateChanged(function(user) {
+        if (user) {
+          signIn.innerHTML = "Signed in as " + user.email
+          window.location.replace('sign-in.html')
+        }
+      })
+    </script>
+
+  </body>
+</html>
