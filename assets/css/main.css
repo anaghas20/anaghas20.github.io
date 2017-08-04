@@ -48,6 +48,11 @@
 		-webkit-text-size-adjust: none;
 	}
 
+/*Edits made by Me*/
+	.wrapper style2 container special-alt p {
+		font-size: 20px;
+	}
+
 /* Box Model */
 
 	*, *:before, *:after {
