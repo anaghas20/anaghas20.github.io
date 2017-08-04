@@ -9,7 +9,6 @@
     <input id="lEmail" type="text" placeholder="email" >
     <input id="lPassword" type="password" placeholder="password">
     <button id="lButton" type="submit">Sign In</button>
-    <button id="signOut" type="submit">Sign Out</button>
 
     <script src="https://www.gstatic.com/firebasejs/4.2.0/firebase.js"></script>
     <script>
@@ -31,7 +30,6 @@
       var lButton = document.getElementById('lButton')
       var signIn = document.querySelector('h1')
 
-      var sigOut = document.getElementById('signOut')
 
       lButton.onclick = function() {
         firebase.auth().signInWithEmailAndPassword(lEmail.value, lPassword.value).catch(function(error) {
@@ -47,14 +45,6 @@
           window.location.replace('index.html')
         }
       })
-
-      signOut.onclick = function () {
-        firebase.auth().signOut().then(function() {
-          signIn.innerHTML = "Sign Out successful"
-        }).catch(function (error) {
-          signIn.innerHTML = "Sign out unsuccessful"
-        })
-      }
 
     </script>
   </body>

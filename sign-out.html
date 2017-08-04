@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+    <h1>Sign Out</h1>
+    <button id="signOut" type="submit">Sign Out</button>
+
+    <script src="https://www.gstatic.com/firebasejs/4.2.0/firebase.js"></script>
+    <script>
+      // Initialize Firebase
+      var config = {
+        apiKey: "AIzaSyBks-XeAaH-RSMvGVOMfN99d0nomShTbpQ",
+        authDomain: "login-logout-20def.firebaseapp.com",
+        databaseURL: "https://login-logout-20def.firebaseio.com",
+        projectId: "login-logout-20def",
+        storageBucket: "login-logout-20def.appspot.com",
+        messagingSenderId: "231256731412"
+      };
+      firebase.initializeApp(config);
+    </script>
+
+    <script>
+      var signIn = document.querySelector('h1')
+
+      var signOut = document.getElementById('signOut')
+
+      signOut.onclick = function () {
+        firebase.auth().signOut().then(function() {
+          signIn.innerHTML = "Sign Out successful"
+          window.location.replace('index.html')
+        }).catch(function (error) {
+          signIn.innerHTML = "Sign out unsuccessful"
+        })
+      }
+
+    </script>
+  </body>
+</html>
